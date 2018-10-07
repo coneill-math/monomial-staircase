@@ -50,7 +50,7 @@ class Vector(object):
 dr = 0.2
 
 # face colors
-(xcol, ycol, zcol) = ('#8e8e8e', '#efefef', '#bebebe')
+# (xcol, ycol, zcol) = ('#8e8e8e', '#efefef', '#bebebe')
 
 # extension of axis labels, in block units
 axesextra = 0
@@ -73,16 +73,23 @@ LOWERLEFT = 3
 LOWERRIGHT = 4
 CENTER = 9
 
-parser = argparse.ArgumentParser(description='Draw the staircase diagram of a given monomial ideal')
+parser = argparse.ArgumentParser(description='Draw the staircase diagram for a given monomial ideal')
 parser.add_argument('filenames', metavar='filename', type=str, nargs='+', help='file containing the monomial generators of an ideal')
 
 parser.add_argument('-b', '--buchberger', action='store_true', help='draw the buchberger graph')
 parser.add_argument('-v', '--verbose', action='count')
 parser.add_argument('-z', '--zaxis', choices=['up', 'out', 'right'], default='out', help='direction for the z-axis')
+
+parser.add_argument('-cf', '--front-color', action='store', default='#bebebe', help='color of front faces')
+parser.add_argument('-cs', '--side-color', action='store', default='#8e8e8e', help='color of side faces')
+parser.add_argument('-ct', '--top-color', action='store', default='#efefef', help='color of top faces')
+
 parser.add_argument('--nolabels', action='store_true', help='don\'t draw generator labels')
 
 args = parser.parse_args()
 
+
+(xcol, ycol, zcol) = (args.side_color, args.top_color, args.front_color)
 
 if (args.zaxis == 'up'):
 	(dx,dy,dz) = (dz,dx,dy)
