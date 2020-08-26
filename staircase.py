@@ -77,7 +77,7 @@ parser = argparse.ArgumentParser(description='Draw the staircase diagram for a g
 parser.add_argument('filenames', metavar='filename', type=str, nargs='+', help='file containing the monomial generators of an ideal')
 
 parser.add_argument('-b', '--buchberger', action='store_true', help='draw the buchberger graph')
-parser.add_argument('-v', '--verbose', action='count')
+parser.add_argument('-v', '--verbose', action='count', default = 0)
 parser.add_argument('-z', '--zaxis', choices=['up', 'out', 'right'], default='out', help='direction for the z-axis')
 
 parser.add_argument('-cf', '--front-color', action='store', default='#bebebe', help='color of front faces')
@@ -134,11 +134,11 @@ for filename in args.filenames:
 				raise
 			gens.append(g)
 	except:
-		print 'Error in file %s: %s' % (filename, line)
+		print('Error in file %s: %s' % (filename, line))
 		continue
 	
 	if (args.verbose > 0):
-		print 'Current ideal: ' + str(gens)
+		print('Current ideal: ' + str(gens))
 	
 	# find bounds
 	isartinian = [0, 0, 0]
@@ -172,7 +172,7 @@ for filename in args.filenames:
 #	grid = [[[1] * maxdeg[2]] * maxdeg[1]] * maxdeg[0]
 	
 	if (args.verbose > 1):
-		print grid
+		print(grid)
 	
 #	for g in gens:
 #		print g
@@ -187,7 +187,7 @@ for filename in args.filenames:
 						break
 	
 	if (args.verbose > 1):
-		print grid
+		print(grid)
 	
 	# draw boxes
 	def blockfrombase(x,y,z):
@@ -210,7 +210,7 @@ for filename in args.filenames:
 	# text.preamble('\\parindent=0pt')
 	
 	if (args.verbose > 1):
-		print 'Staircase lower left: ' + str(stairlowerleft)
+		print('Staircase lower left: ' + str(stairlowerleft))
 	
 	# the lower left back corner
 	def cubestart(x, y, z):
@@ -368,7 +368,7 @@ parser.add_argument('integers', metavar='N', type=int, nargs='+', help='an integ
 args = parser.parse_args();
 
 for i in args.integers:
-	print "%d factorial is %d" % (i,fact(i))
+	print("%d factorial is %d" % (i,fact(i)))
 
 
 oh=ShapeBuilder()
