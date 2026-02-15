@@ -45,6 +45,7 @@ class Vector(object):
 # this assumes '--zaxis out', program will 
 # change these automatically for '--zaxis up'
 (dx, dy, dz) = (Vector(2,0), Vector(0,2), Vector(-1,-1))
+#(dx, dy, dz) = (Vector(-1,-0.5), Vector(1,-0.5), Vector(0,1))
 
 # radius of marker circles
 dr = 0.2
@@ -77,7 +78,7 @@ parser = argparse.ArgumentParser(description='Draw the staircase diagram for a g
 parser.add_argument('filenames', metavar='filename', type=str, nargs='+', help='file containing the monomial generators of an ideal')
 
 parser.add_argument('-b', '--buchberger', action='store_true', help='draw the buchberger graph')
-parser.add_argument('-v', '--verbose', action='count', default = 0)
+parser.add_argument('-v', '--verbose', action='count')
 parser.add_argument('-z', '--zaxis', choices=['up', 'out', 'right'], default='out', help='direction for the z-axis')
 
 parser.add_argument('-cf', '--front-color', action='store', default='#bebebe', help='color of front faces')
@@ -137,7 +138,7 @@ for filename in args.filenames:
 		print('Error in file %s: %s' % (filename, line))
 		continue
 	
-	if (args.verbose > 0):
+	if (args.verbose != None and args.verbose > 0):
 		print('Current ideal: ' + str(gens))
 	
 	# find bounds
@@ -171,11 +172,11 @@ for filename in args.filenames:
 	
 #	grid = [[[1] * maxdeg[2]] * maxdeg[1]] * maxdeg[0]
 	
-	if (args.verbose > 1):
+	if (args.verbose != None and args.verbose > 1):
 		print(grid)
 	
 #	for g in gens:
-#		print g
+#		print(g)
 	
 	# build grid
 	for x in range(maxdeg[0]):
@@ -186,7 +187,7 @@ for filename in args.filenames:
 						grid[x][y][z] = 0
 						break
 	
-	if (args.verbose > 1):
+	if (args.verbose != None and args.verbose > 1):
 		print(grid)
 	
 	# draw boxes
@@ -209,7 +210,7 @@ for filename in args.filenames:
 	c = canvas.canvas()
 	# text.preamble('\\parindent=0pt')
 	
-	if (args.verbose > 1):
+	if (args.verbose != None and args.verbose > 1):
 		print('Staircase lower left: ' + str(stairlowerleft))
 	
 	# the lower left back corner
