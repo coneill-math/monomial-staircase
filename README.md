@@ -4,7 +4,7 @@ Draw the staircase diagram of a given monomial ideal.
 * Supports 3-dimensional monomial ideals of any size.  
 * Optionally draws Buchberger graphs.  
 * Several different "angles" (that is, 3D perspectives) are built in.  
-* Feature requests are encouraged, just send me an email!
+* Feature requests are encouraged, just file a Github issue!
 
 You can find action shots in the `samples` folder.  
 
@@ -16,9 +16,8 @@ numsgps-sage is released under the terms of the [GNU General Public License Vers
 ## Usage
 To set up your machine to use monomial-staircase, do the following.  
 
-* Download and unzip monomial-staircase.  It does not need to be placed in any particular location
-* Download and unzip [PyX](https://pypi.org/project/PyX).  
-* Move the `pyx` folder (the one with a whole bunch of `.py` files in it) into the same folder as `staircase.py`.
+* Download and unzip monomial-staircase.  It does not need to be placed in any particular location.
+* Install [PyX](https://pypi.org/project/PyX).  This should be as easy as running `pip install pyx`; if you run into issues, the project site has more detailed installation instructions.  
 
 To use monomial-staircase, use your favorite Python interpreter, or open the command prompt and run the following commands (replace `PATH_TO_MONOMIAL_STAIRCASE` with the path of whichever folder contains `staircase.py`).  
 
